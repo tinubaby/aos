@@ -116,7 +116,73 @@ def logout():
     sleep(1)
     print(f'TASK: LOGOUT : COMPLETED')
 
+def links():
+    #1. Check that SPEAKERS, TABLETS, HEADPHONES, LAPTOPS, MICE texts are displayed.
+    assert driver.find_element(By.ID,'speakersTxt').is_displayed(),'Error: Speaker not displayed'
+    sleep(1)
+    assert driver.find_element(By.ID, 'tabletsTxt').is_displayed(), 'Error: Tablet not displayed'
+    sleep(1)
+    assert driver.find_element(By.ID, 'laptopsTxt').is_displayed(), 'Error: Laptop not displayed'
+    sleep(1)
+    assert driver.find_element(By.ID, 'miceTxt').is_displayed(), 'Error: Mice not displayed'
+    sleep(1)
+    assert driver.find_element(By.ID, 'headphonesTxt').is_displayed(), 'Error: Headphones not displayed'
+    sleep(1)
+    assert driver.find_element(By.ID,'speakersLink').is_enabled(), 'Error: Shop now for Speaker not working'
+    sleep(1)
+    assert driver.find_element(By.ID,'tabletsLink').is_enabled(), 'Error: Shop now for Tablet not working'
+    sleep(1)
+    assert driver.find_element(By.ID,'laptopsLink').is_enabled(), 'Error: Shop now for Laptop not working'
+    sleep(1)
+    assert driver.find_element(By.ID,'miceLink').is_enabled(), 'Error: Shop now for Mice not working'
+    sleep(1)
+    assert driver.find_element(By.ID,'headphonesLink').is_enabled(), 'Error: Shop now for Headphones not working'
+    sleep(1)
+    assert driver.find_element(By.XPATH,'//article/h3[contains(.,"SPECIAL OFFER")]').is_displayed(),'ERROR: SPECIAL OFFER not displayed'
+    sleep(1)
+
+    assert driver.find_element(By.ID,'see_offer_btn').is_enabled(),'Error: OFFER Button not enabled'
+    sleep(1)
+    assert driver.find_element(By.XPATH,'.//li/a[contains(.,"OUR PRODUCTS")]').is_enabled(),'ERROR: OUR PRODUCT id not clickable'
+    sleep(1)
+    assert driver.find_element(By.XPATH,'.//li/a[contains(.,"SPECIAL OFFER")]').is_enabled(),'ERROR: SPECIAL OFFER is not clickable'
+    sleep(1)
+    assert driver.find_element(By.XPATH,'.//li/a[contains(.,"POPULAR ITEMS")]').is_enabled(),'ERROR: POPULAR ITEMS not clickable'
+    sleep(1)
+    assert driver.find_element(By.XPATH,'.//li/a[contains(.,"CONTACT US")]').is_enabled(),'ERROR: CONATCT US is not clickable'
+    sleep(1)
+    assert driver.find_element(By.XPATH,'.//div/a/span[contains(.,"dvantage")]').is_displayed(),'ERROR: LOGO not displayed'
+    sleep(1)
+
+def contactUs():
+
+    Select(driver.find_element(By.NAME,'categoryListboxContactUs')).select_by_value('object:59')
+    sleep(1)
+    Select(driver.find_element(By.NAME,'productListboxContactUs')).select_by_visible_text('HP Chromebook 14 G1(ENERGY STAR)')
+    sleep(1)
+    driver.find_element(By.NAME,'emailContactUs').send_keys('abcd@gmail.com')
+    sleep(1)
+    driver.find_element(By.NAME,'subjectTextareaContactUs').send_keys('This is subject area text')
+    sleep(1)
+    driver.find_element(By.ID,'send_btnundefined').click()
+    sleep(1)
+    assert driver.find_element(By.XPATH,'.//p[contains(.,"Thank you for contacting Advantage support.")]').is_displayed(),'ERROR: THANK YOU message not displayed'
+    sleep(1)
+    assert driver.find_element(By.LINK_TEXT,'CONTINUE SHOPPING').is_enabled(),'ERROR: CONTINUE SHOPPING Button not enabled'
+    sleep(1)
+    assert driver.find_element(By.NAME,'follow_facebook').is_enabled(),'ERROR: FACEBOOK is not clickable'
+    sleep(1)
+    assert driver.find_element(By.NAME,'follow_twitter').is_enabled(),'ERROR: Twitter is not clickable'
+    sleep(1)
+    assert driver.find_element(By.NAME,'follow_linkedin').is_enabled(),'ERROR: LinkedIN is not clickable'
+    sleep(1)
+
+
+
+#
 # setUp()
+# links()
+# contactUs()
 # create_account()
 # logout()
 # login()
