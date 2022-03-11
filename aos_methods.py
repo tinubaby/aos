@@ -153,6 +153,7 @@ def links():
     sleep(1)
     assert driver.find_element(By.XPATH,'.//div/a/span[contains(.,"dvantage")]').is_displayed(),'ERROR: LOGO not displayed'
     sleep(1)
+    print("HOME PAGE -LINKS SUCCESSFULLY VALIDATED ")
 
 def contactUs():
 
@@ -176,6 +177,8 @@ def contactUs():
     sleep(1)
     assert driver.find_element(By.NAME,'follow_linkedin').is_enabled(),'ERROR: LinkedIN is not clickable'
     sleep(1)
+    print("HOME PAGE -CONTACT US SUCCESSFULLY VALIDATED ")
+    print('HOME PAGE IS WORKING ')
 
 
 
