@@ -180,7 +180,35 @@ def contactUs():
     print("HOME PAGE -CONTACT US SUCCESSFULLY VALIDATED ")
     print('HOME PAGE IS WORKING ')
 
-
+def myOrders():
+    sleep(1)
+    driver.find_element(By.ID, 'menuUser').click()
+    sleep(1)
+    driver.find_element(By.XPATH, '//a/div/label[contains(.,"My orders")]').click()
+    sleep(1)
+    assert driver.find_element(By.XPATH,'//div/label[contains(.,"No order")]').is_displayed(),'Error: NO order not dispalyed'
+    print('No orders displayed')
+    sleep(1)
+    driver.find_element(By.ID, 'menuUser').click()
+    sleep(1)
+    driver.find_element(By.XPATH, '//a/div/label[contains(.,"My account")]').click()
+    sleep(1)
+    driver.find_element(By.XPATH,'.//button[contains(@class,"deleteMainBtnContainer")]').click()
+    sleep(1)
+    driver.find_element(By.XPATH,'.//div[@class="deletePopupBtn deleteRed"]').click()
+    sleep(3)
+    driver.find_element(By.ID, 'menuUser').click()
+    sleep(1)
+    driver.find_element(By.XPATH, '//*[@name="username"]').send_keys(locators.username)
+    print(f' Username {locators.username} entered')
+    sleep(1)
+    driver.find_element(By.XPATH, '//*[@name="password"]').send_keys(locators.password)
+    print(f' Password {locators.password} entered')
+    sleep(1)
+    driver.find_element(By.ID, 'sign_in_btnundefined').click()
+    sleep(1)
+    assert driver.find_element(By.ID,'signInResultMessage').is_displayed(),'Error: Error message not dispalying'
+    print("Error message Displayed")
 
 #
 # setUp()
@@ -190,4 +218,6 @@ def contactUs():
 # logout()
 # login()
 # logout()
+#login()
+#myOrders()
 # tearDown()
