@@ -26,12 +26,12 @@ def setUp():
     #get to the URL: https://advantageonlineshopping.com/#/ (Links to an external site.)
     # (add it to aos_locators.py and import as a variable);
     # Navigate to aos app website
-    driver.get(f'{locators.AOS_url}')
+    driver.get(f'{locators.aos_url}')
 
     #check/compare the driver.current_url with expected and driver.title with expected.
     # This should be in one conditional statement. if everything as expected - print user-friendly message;
 
-    if driver.current_url == locators.AOS_url and driver.title == locators.AOS_home_page_title:
+    if driver.current_url == locators.aos_url and driver.title == locators.aos_home_page_title:
         print('Current page url and Title succussfully validated')
     else:
         #- if URL and title are not as expected, print user-friendly messages about incorrect destination.
@@ -111,9 +111,9 @@ def login():
 def logout():
     sleep(1)
     driver.find_element(By.ID,'menuUserLink').click()
-    sleep(1)
+    sleep(3)
     driver.find_element(By.XPATH,'//a/div/label[contains(.,"Sign out")]').click()
-    sleep(1)
+    sleep(3)
     print(f'TASK: LOGOUT : COMPLETED')
 
 def links():
@@ -209,6 +209,35 @@ def myOrders():
     sleep(1)
     assert driver.find_element(By.ID,'signInResultMessage').is_displayed(),'Error: Error message not dispalying'
     print("Error message Displayed")
+# def checkoutShoppingCart():
+#     #Add item to the shopping cart
+#     #Scroll to the bottom and click one of the View Details links and add an item to a shopping cart.
+#     driver.find_element(By.ID,'details_21').click()
+#     sleep(1)
+#     driver.find_element(By.NAME,'save_to_cart').click()
+#     sleep(1)
+#     driver.find_element(By.ID,'checkOutPopUp').click()
+#     sleep(1)
+#     assert driver.find_element(By.XPATH,f'.//label[contains(.,{locators.username})]').is_displayed(),'ERROR: Username NOT DISPLAYED at ORDER PAYMENT PAGE'
+#     print('USername dispalyed at order payment page')
+#     sleep(1)
+#     driver.find_element(By.ID,'next_btn').click()
+#     sleep(1)
+#     driver.find_element(By.ID,'safepay_username').send_keys('spuser')
+#     sleep(1)
+#     driver.find_element(By.ID,'safepay_password').send_keys('Pass123')
+#     sleep(1)
+#     driver.find_element(By.ID,'pay_now_btn_SAFEPAY').click()
+#     sleep(1)
+#     assert driver.find_element(By.XPATH,'.//span[contains(.,"Thank you for buying")]').is_displayed(),'Error: Thank you message not displayed'
+#     print('Thank you message displayed')
+#     sleep(1)
+#     print(f'Tracking Number: {driver.find_element(By.ID,"trackingNumberLabel")}')
+#     sleep(1)
+#     print(f'Order Number: {driver.find_element(By.ID,"orderNumberLabel")}')
+#     sleep(1)
+#     assert driver.find_element(By.XPATH,f'//div[@class="innerSeccion"]/label[contains(.,{locators.username})]').is_displayed(), 'ERROR: Username NOT DISPLAYED at Thankyou PAGE'
+#     print('USername dispalyed at Thank you page')
 
 #
 # setUp()
@@ -217,6 +246,7 @@ def myOrders():
 # create_account()
 # logout()
 # login()
+#checkOutShoppingCart()
 # logout()
 #login()
 #myOrders()
