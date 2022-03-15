@@ -111,7 +111,7 @@ def login():
 def logout():
     sleep(1)
     driver.find_element(By.ID,'menuUserLink').click()
-    sleep(3)
+    sleep(5)
     driver.find_element(By.XPATH,'//a/div/label[contains(.,"Sign out")]').click()
     sleep(3)
     print(f'TASK: LOGOUT : COMPLETED')
@@ -186,6 +186,10 @@ def myOrders():
     sleep(1)
     driver.find_element(By.XPATH, '//a/div/label[contains(.,"My orders")]').click()
     sleep(1)
+    driver.find_element(By.LINK_TEXT,'REMOVE').click()
+    sleep(1)
+    driver.find_element(By.ID,'confBtn_1').click()
+    sleep(1)
     assert driver.find_element(By.XPATH,'//div/label[contains(.,"No order")]').is_displayed(),'Error: NO order not dispalyed'
     print('No orders displayed')
     sleep(1)
@@ -209,35 +213,35 @@ def myOrders():
     sleep(1)
     assert driver.find_element(By.ID,'signInResultMessage').is_displayed(),'Error: Error message not dispalying'
     print("Error message Displayed")
-# def checkoutShoppingCart():
-#     #Add item to the shopping cart
-#     #Scroll to the bottom and click one of the View Details links and add an item to a shopping cart.
-#     driver.find_element(By.ID,'details_21').click()
-#     sleep(1)
-#     driver.find_element(By.NAME,'save_to_cart').click()
-#     sleep(1)
-#     driver.find_element(By.ID,'checkOutPopUp').click()
-#     sleep(1)
-#     assert driver.find_element(By.XPATH,f'.//label[contains(.,{locators.username})]').is_displayed(),'ERROR: Username NOT DISPLAYED at ORDER PAYMENT PAGE'
-#     print('USername dispalyed at order payment page')
-#     sleep(1)
-#     driver.find_element(By.ID,'next_btn').click()
-#     sleep(1)
-#     driver.find_element(By.ID,'safepay_username').send_keys('spuser')
-#     sleep(1)
-#     driver.find_element(By.ID,'safepay_password').send_keys('Pass123')
-#     sleep(1)
-#     driver.find_element(By.ID,'pay_now_btn_SAFEPAY').click()
-#     sleep(1)
-#     assert driver.find_element(By.XPATH,'.//span[contains(.,"Thank you for buying")]').is_displayed(),'Error: Thank you message not displayed'
-#     print('Thank you message displayed')
-#     sleep(1)
-#     print(f'Tracking Number: {driver.find_element(By.ID,"trackingNumberLabel")}')
-#     sleep(1)
-#     print(f'Order Number: {driver.find_element(By.ID,"orderNumberLabel")}')
-#     sleep(1)
-#     assert driver.find_element(By.XPATH,f'//div[@class="innerSeccion"]/label[contains(.,{locators.username})]').is_displayed(), 'ERROR: Username NOT DISPLAYED at Thankyou PAGE'
-#     print('USername dispalyed at Thank you page')
+def checkoutShoppingCart():
+    #Add item to the shopping cart
+    #Scroll to the bottom and click one of the View Details links and add an item to a shopping cart.
+    driver.find_element(By.ID,'details_21').click()
+    sleep(1)
+    driver.find_element(By.NAME,'save_to_cart').click()
+    sleep(1)
+    driver.find_element(By.ID,'checkOutPopUp').click()
+    sleep(1)
+    assert driver.find_element(By.XPATH,f'.//div[@id="userDetails"]/div/label[contains(.,{locators.username})]').is_displayed(),'ERROR: Username NOT DISPLAYED at ORDER PAYMENT PAGE'
+    print('USername dispalyed at order payment page')
+    sleep(1)
+    driver.find_element(By.ID,'next_btn').click()
+    sleep(3)
+    driver.find_element(By.NAME,'safepay_username').send_keys('spuser')
+    sleep(3)
+    driver.find_element(By.NAME,'safepay_password').send_keys('Pass123')
+    sleep(1)
+    driver.find_element(By.ID,'pay_now_btn_SAFEPAY').click()
+    sleep(1)
+    assert driver.find_element(By.XPATH,'.//span[contains(.,"Thank you for buying")]').is_displayed(),'Error: Thank you message not displayed'
+    print('Thank you message displayed')
+    sleep(1)
+    print(f'Tracking Number: {driver.find_element(By.ID,"trackingNumberLabel").text}')
+    sleep(1)
+    print(f'Order Number: {driver.find_element(By.ID,"orderNumberLabel").text}')
+    sleep(1)
+    assert driver.find_element(By.XPATH,f'//div[@class="innerSeccion"]/label[contains(.,{locators.username})]').is_displayed(), 'ERROR: Username NOT DISPLAYED at Thankyou PAGE'
+    print('USername dispalyed at Thank you page')
 
 #
 # setUp()

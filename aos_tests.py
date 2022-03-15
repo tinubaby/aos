@@ -12,6 +12,7 @@ class AosAppPositiveTestCases(unittest.TestCase):
         methods.create_account()
         methods.logout()
         methods.login()
+        methods.checkoutShoppingCart()
         methods.logout()
         methods.login()
         methods.myOrders()
